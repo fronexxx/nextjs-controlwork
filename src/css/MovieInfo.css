@@ -1,0 +1,116 @@
+.movie-info-page {
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    color: white;
+}
+
+.movie-info-overlay {
+    background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.85) 20%,
+            rgba(0, 0, 0, 0.95) 60%,
+            rgba(0, 0, 0, 1) 100%
+    );
+    min-height: 100vh;
+    padding: 40px 60px;
+}
+
+.movie-info-overlay button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    transition: 0.3s ease;
+}
+
+.movie-info-overlay button:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.movie-info-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.movie-info-poster {
+    width: 320px;
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+.movie-info-data {
+    max-width: 800px;
+}
+
+.movie-info-title {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.movie-info-tagline {
+    font-style: italic;
+    color: #bbbbbb;
+    margin-bottom: 20px;
+}
+
+.movie-info-overview {
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.movie-info-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 10px 30px;
+    margin-bottom: 30px;
+}
+
+.movie-info-details p {
+    margin: 4px 0;
+}
+
+.movie-info-extra h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 5px;
+}
+
+.movie-info-extra ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.movie-info-extra li {
+    margin-bottom: 6px;
+    color: #cccccc;
+}
+
+@media (max-width: 1024px) {
+    .movie-info-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .movie-info-poster {
+        width: 260px;
+    }
+
+    .movie-info-data {
+        text-align: center;
+    }
+
+    .movie-info-details {
+        grid-template-columns: 1fr;
+    }
+}

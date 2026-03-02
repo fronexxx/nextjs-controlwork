@@ -1,0 +1,61 @@
+.selected-genre {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 96%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    background-color: #111;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.selected-genre__select {
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: #1f1f1f;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.selected-genre__select:hover {
+    background-color: #2a2a2a;
+}
+
+.selected-genre__select:focus {
+    box-shadow: 0 0 0 2px #e50914;
+}
+
+.selected-genre__user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.selected-genre__username {
+    margin: 0;
+    font-weight: 500;
+}
+
+.selected-genre__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e50914;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.selected-genre__avatar:hover {
+    transform: scale(1.05);
+}
+
+

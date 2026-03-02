@@ -17,9 +17,10 @@ export const getMovieById = async (id: string): Promise<IMovieExpanded> => {
         .then((response) => response.json());
 };
 
-export const getGenres = async (): Promise<IGenres> => {
-    return await fetch(urls.BASE_URL + '/genre/movie/list/' + api_key)
-        .then((response) => response.json())
+export const getGenres = async (): Promise<IGenres[]> => {
+     const {genres} = await fetch(urls.BASE_URL + '/genre/movie/list' + api_key, {cache: 'no-store'})
+        .then((response) => response.json());
+    return genres;
 };
 
 

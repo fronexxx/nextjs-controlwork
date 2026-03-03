@@ -1,10 +1,27 @@
-import {getMovies} from "@/services/api.service";
 import MovieCard from "@/components/MovieComponents/MovieCard";
-import {IMovie} from "@/models/IMovie";
 import '../../css/MovieList.css';
+import {FC} from "react";
+import {getMovies, getMoviesByGenre} from "@/services/api.service";
 
-export const MoviesList = async () => {
-    const movies: IMovie[] = await getMovies();
+interface Props {
+    searchParams: {
+        with_genres?: string;
+        }
+}
+
+
+export const MoviesList: FC<Props> = async ({searchParams}) => {
+
+    const genreId = searchParams.with_genres;
+
+    let movies;
+
+    if (genreId){
+        movies = await getMoviesByGenre(genreId);
+    }else {
+        movies = await getMovies()
+    }
+
     return (
         <div className="movies-grid">
             {movies.map(movie => (

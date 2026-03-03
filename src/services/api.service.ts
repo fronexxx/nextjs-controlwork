@@ -7,9 +7,9 @@ import {IGenres} from "@/models/IGenres";
 const api_key = `?api_key=${urls.API}`
 
 export const getMovies = async (): Promise<IMovie[]> => {
-     const movies: IMovieResponse =  await fetch(urls.BASE_URL + '/discover/movie' + api_key)
+     const {results}: IMovieResponse =  await fetch(urls.BASE_URL + '/discover/movie' + api_key)
         .then((response) => response.json());
-    return movies.results;
+    return results;
 };
 
 export const getMovieById = async (id: string): Promise<IMovieExpanded> => {
@@ -17,8 +17,14 @@ export const getMovieById = async (id: string): Promise<IMovieExpanded> => {
         .then((response) => response.json());
 };
 
+export const getMoviesByGenre = async (genreId: string): Promise<IMovie[]> => {
+     const {results}: IMovieResponse = await fetch(urls.BASE_URL + '/discover/movie' + api_key + `&with_genres=${genreId}`)
+        .then((response) => response.json());
+     return results
+};
+
 export const getGenres = async (): Promise<IGenres[]> => {
-     const {genres} = await fetch(urls.BASE_URL + '/genre/movie/list' + api_key, {cache: 'no-store'})
+     const {genres} = await fetch(urls.BASE_URL + '/genre/movie/list' + api_key)
         .then((response) => response.json());
     return genres;
 };

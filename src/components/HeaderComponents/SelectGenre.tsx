@@ -1,8 +1,9 @@
 'use client'
 
 import {IGenres} from "@/models/IGenres";
-import {FC} from "react";
+import {ChangeEvent, FC} from "react";
 import '../../css/Header.css';
+import {useRouter, useSearchParams} from "next/navigation";
 
 interface Props {
     genres: IGenres[];
@@ -11,9 +12,20 @@ interface Props {
 
 const SelectGenre: FC<Props> = ({genres}) => {
 
+    const router = useRouter();
+
+    const searchParams = useSearchParams();
+    const selectedGenre = searchParams.get('with_genres') || '';
+
+    const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        const genreId = e.target.value;
+
+        router.push(`/?with_genres=${genreId}`);
+    };
+
     return (
         <div className="selected-genre">
-            <select className="selected-genre__select">
+            <select className="selected-genre__select" value={selectedGenre} onChange={onChange}>
                 <option value="">All Genres</option>
                 {genres.map((genre) => (
                     <option key={genre.id} value={genre.id}>

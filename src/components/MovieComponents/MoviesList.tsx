@@ -6,20 +6,21 @@ import {getMovies, getMoviesByGenre} from "@/services/api.service";
 interface Props {
     searchParams: {
         with_genres?: string;
-        }
+        page: number
+    };
 }
 
 
 export const MoviesList: FC<Props> = async ({searchParams}) => {
 
-    const genreId = searchParams.with_genres;
+    const {with_genres, page} = searchParams;
 
     let movies;
 
-    if (genreId){
-        movies = await getMoviesByGenre(genreId);
+    if (with_genres){
+        movies = await getMoviesByGenre(with_genres, page);
     }else {
-        movies = await getMovies()
+        movies = await getMovies(page)
     }
 
     return (

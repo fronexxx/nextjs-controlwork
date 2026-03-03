@@ -1,6 +1,7 @@
 'use client'
 
 import {useRouter, useSearchParams} from "next/navigation";
+import '../../css/Pagination.css';
 
 const PaginationComponent = () => {
     const router = useRouter();
@@ -30,15 +31,17 @@ const PaginationComponent = () => {
         updatedPage(currentPage + 1);
     };
     return (
-        <div>
+        <div className="pagination">
             <button
+                className="pagination__button"
                 onClick={onPrevClick}
                 disabled={currentPage === 1}
             >
                 prev
             </button>
-            <span>{currentPage}</span>
+            <span className="pagination__current">{currentPage}</span>
             <button
+                className="pagination__button"
                 onClick={onNextClick}
                 disabled={currentPage === 500}
             >

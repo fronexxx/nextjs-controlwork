@@ -45,12 +45,17 @@ const SearchComponent = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" value={value} placeholder={'Search Movie By Name...'} onChange={(e) => {
-                setValue(e.target.value);
-            }} className='search-input'/>
-            <button type={'submit'}>Search</button>
-            <button onClick={handleClear}>Clear</button>
+            <input
+                type="text"
+                value={value}
+                placeholder="Search Movie By Name..."
+                onChange={(e) => setValue(e.target.value)}
+                className="search-input"
+            />
+            <button type="submit" className="search-button">Search</button>
+            <button type="button" onClick={handleClear} className="clear-button">Clear</button>
         </form>
+
     );
 };
 

@@ -20,14 +20,17 @@ const SelectGenre: FC<Props> = ({genres}) => {
     const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
         const genreId = e.target.value;
 
-        const params = new URLSearchParams(window.location.search);
-
+        const params = new URLSearchParams(searchParams.toString());
         if (genreId === ''){
             params.delete('with_genres');
         }else {
             params.set('with_genres', genreId);
         }
         params.set('page', '1');
+        const query = searchParams.get('query');
+        if (query) {
+            params.set('query', query)
+        }
 
         router.push(`/?${params.toString()}`);
         window.scrollTo({top: 0, behavior: "smooth"});

@@ -1,24 +1,31 @@
 import MovieCard from "@/components/MovieComponents/MovieCard";
 import '../../css/MovieList.css';
 import {FC} from "react";
-import {getMovies, getMoviesByGenre} from "@/services/api.service";
+import {getMovies, getMoviesByGenre, searchMovies} from "@/services/api.service";
 
 interface Props {
     searchParams: {
         with_genres?: string;
-        page: number
+        page: number;
+        query?: string;
     };
 }
 
 
+
 export const MoviesList: FC<Props> = async ({searchParams}) => {
 
-    const {with_genres, page} = searchParams;
+    const {with_genres, page, query} = searchParams;
 
     let movies;
 
-    if (with_genres){
+    if (query && with_genres){
+        movies = await searchMovies(query, with_genres);
+    }else if (with_genres){
         movies = await getMoviesByGenre(with_genres, page);
+    }
+    else if (query){
+        movies = await searchMovies(query, undefined);
     }else {
         movies = await getMovies(page)
     }

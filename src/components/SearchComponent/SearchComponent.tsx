@@ -1,26 +1,56 @@
 'use client'
 
-import {ChangeEvent} from "react";
-import {getMovies, searchMovies} from "@/services/api.service";
+import {ChangeEvent, useState} from "react";
 import '../../css/Search.css';
+import {useRouter, useSearchParams} from "next/navigation";
 
 const SearchComponent = () => {
 
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const query = searchParams.get('query') || '';
+
+    const [value, setValue] = useState(query);
+
+
+    const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        const params = new URLSearchParams(searchParams.toString());
 
         if (value.trim() === ''){
-            getMovies(1);
+            params.delete('query');
         }else {
-            searchMovies(value);
+            params.set('query', value);
         }
 
+        params.set('page', '1');
+
+        const genreId = searchParams.get('with_genres');
+        if (genreId) {
+            params.set('with_genres', genreId);
+        }
+
+        router.push(`/?${params.toString()}`);
     };
 
+    const handleClear = () => {
+        const params = new URLSearchParams(searchParams.toString());
+
+        setValue('')
+        params.delete('query');
+
+        params.set('page', '1');
+        router.push(`/?${params.toString()}`);
+    }
+
     return (
-        <div>
-            <input type="text" name={'search'} placeholder={'Search Movie By Name...'} onChange={onChange} className='search-input'/>
-        </div>
+        <form onSubmit={handleSubmit}>
+            <input type="text" value={value} placeholder={'Search Movie By Name...'} onChange={(e) => {
+                setValue(e.target.value);
+            }} className='search-input'/>
+            <button type={'submit'}>Search</button>
+            <button onClick={handleClear}>Clear</button>
+        </form>
     );
 };
 

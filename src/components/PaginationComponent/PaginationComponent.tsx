@@ -9,8 +9,15 @@ const PaginationComponent = () => {
 
     const currentPage = Number(searchParams.get('page') || 1);
     const genreId = searchParams.get('with_genres');
+    const query = searchParams.get('query');
+
+    const isSearchOnly = query && !genreId;
 
     const updatedPage = (newPage: number) => {
+        if (isSearchOnly) {
+            return null
+        }
+
         const params = new URLSearchParams(searchParams.toString());
 
         params.set('page', newPage.toString())
@@ -43,7 +50,7 @@ const PaginationComponent = () => {
             <button
                 className="pagination__button"
                 onClick={onNextClick}
-                disabled={currentPage === 500}
+                disabled={query !== null || currentPage === 500}
             >
                 next
             </button>

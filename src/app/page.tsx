@@ -17,6 +17,12 @@ export default async function Home({searchParams}: PropsPage) {
 
     let genreId: string | undefined;
     let page: number = 1;
+    let query: string | undefined;
+
+    if (typeof params.query === 'string') {
+        query = params.query;
+    }
+
 
     if (typeof params.with_genres === 'string') {
         genreId = params.with_genres
@@ -34,7 +40,8 @@ export default async function Home({searchParams}: PropsPage) {
         <HeaderComponent/>
         <MoviesList searchParams={{
             with_genres: genreId,
-            page
+            page,
+            query
         }}/>
         <PaginationComponent/>
     </div>

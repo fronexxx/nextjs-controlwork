@@ -29,8 +29,8 @@ export const getGenres = async (): Promise<IGenres[]> => {
     return genres;
 };
 
-export const searchMovies = async (query: string): Promise<IMovie[]> => {
-    const {results}: IMovieResponse = await fetch(urls.BASE_URL + api_key + `&search/movie?query=${query}`)
+export const searchMovies = async (query: string, genreId: string | undefined): Promise<IMovie[]> => {
+    const {results}: IMovieResponse = await fetch(urls.BASE_URL + '/search/movie' + api_key + `&query=${query}&with_genres=${genreId}`)
         .then((response) => response.json());
     return results;
 };

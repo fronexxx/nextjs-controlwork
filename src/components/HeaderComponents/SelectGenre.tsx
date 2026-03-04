@@ -34,7 +34,7 @@ const SelectGenre: FC<Props> = ({genres}) => {
     };
 
     return (
-        <div className="selected-genre">
+        <>
             <select className="selected-genre__select" value={selectedGenre} onChange={onChange}>
                 <option value="">All Genres</option>
                 {genres.map((genre) => (
@@ -43,16 +43,7 @@ const SelectGenre: FC<Props> = ({genres}) => {
                     </option>
                 ))}
             </select>
-
-            <div className="selected-genre__user">
-                <p className="selected-genre__username">Igor Botsii</p>
-                <img
-                    className="selected-genre__avatar"
-                    src="https://www.shutterstock.com/image-illustration/avatar-vector-illustration-gender-neutral-260nw-2587614499.jpg"
-                    alt="user-info"
-                />
-            </div>
-        </div>
+        </>
     );
 };
 

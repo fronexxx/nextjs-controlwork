@@ -1,6 +1,5 @@
 import MoviesList from "@/components/MovieComponents/MoviesList";
 import HeaderComponent from "@/components/HeaderComponents/HeaderComponent";
-import {type} from "node:os";
 import PaginationComponent from "@/components/PaginationComponent/PaginationComponent";
 
 
@@ -9,6 +8,8 @@ interface PropsPage {
         [key: string]: string | string[] | undefined;
     }>
 }
+
+
 
 export default async function Home({searchParams}: PropsPage) {
 

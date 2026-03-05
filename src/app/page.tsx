@@ -11,7 +11,7 @@ interface PropsPage {
 
 
 
-export default async function Home({searchParams}: PropsPage) {
+export default async function MoviesPage({searchParams}: PropsPage) {
 
     const params = await searchParams;
 

@@ -1,5 +1,5 @@
 import MovieCard from "@/components/MovieComponents/MovieCard";
-import '../../css/MovieList.css';
+import '../../css/MovieCard.css';
 import {FC} from "react";
 import {getMovies, getMoviesByGenre, searchMovies} from "@/services/api.service";
 

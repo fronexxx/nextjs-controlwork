@@ -53,7 +53,7 @@ const SearchComponent = () => {
                 className="search-input"
             />
             <button type="submit" className="search-button">Search</button>
-            <button type="button" onClick={handleClear} className="clear-button">Clear</button>
+            <button type="button" title={'clear input'} onClick={handleClear} className="clear-button">Clear</button>
         </form>
 
     );

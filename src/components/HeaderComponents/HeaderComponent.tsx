@@ -2,6 +2,7 @@ import '../../css/Header.css';
 import SelectGenre from "@/components/HeaderComponents/SelectGenre";
 import SearchComponent from "@/components/SearchComponent/SearchComponent";
 import {getGenres} from "@/services/api.service";
+import BackTo1PageBtn from "@/components/HeaderComponents/BackTo1PageBtn";
 
 
 const HeaderComponent = async () => {
@@ -11,6 +12,7 @@ const HeaderComponent = async () => {
     return (
         <header className="selected-genre">
             <SelectGenre genres={genres}/>
+            <BackTo1PageBtn/>
             <SearchComponent/>
 
             <div className="selected-genre__user">
